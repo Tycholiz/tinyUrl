@@ -1,5 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Welcome to #{title}
+  form(action="/url")
+    input(type="submit" value="Generate new short URL")
+  h1 Your URLs
+    ul
+      each url, index in db
+        li #{url.longUrl} ⟶ #{index}
+        a(href=`//${url.longUrl}`) Visit URL
+
+        div
+          - console.log(data)
+        div

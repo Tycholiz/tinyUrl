@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  form(action="/" method="POST")
+    label(for="longUrl") Enter the site you'd like to shorten:
+    input(type="text" id="longUrl" placeholder="" name="longUrl")
+    input(type="submit" value="Submit")
