@@ -9,6 +9,10 @@ block content
       each url, index in db
         li #{url.longUrl} ⟶ #{index}
         a(href=`//${url.longUrl}`) Visit URL
+    ul
+      each url in urls
+        li #{url.longUrl} ⟶ #{url.shortUrl}
+        a(href=`//${url.longUrl}`) Visit URL
 
         //- div
         //-   - console.log(data)
