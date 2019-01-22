@@ -2,18 +2,12 @@ extends layout
 
 block content
   h1 Welcome to #{title}
-  form(action="/url")
+  form(action="/url" method="GET")
     input(type="submit" value="Generate new short URL")
   h1 Your URLs
     ul
-      each url, index in db
-        li #{url.longUrl} ⟶ #{index}
-        a(href=`//${url.longUrl}`) Visit URL
-    ul
       each url in urls
         li #{url.longUrl} ⟶ #{url.shortUrl}
-        a(href=`//${url.longUrl}`) Visit URL
-
-        //- div
-        //-   - console.log(data)
-        //- div
+        a(href=`/u/${url.shortUrl}`) Visit URL
+        form(action=`/${url._id}/delete` method="POST")
+          input(type="submit" value="Delete")
