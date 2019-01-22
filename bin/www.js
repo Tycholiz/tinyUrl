@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const app = require('../src/app');
+const app = require('../app');
 const debug = require('debug')('docker-ci:server');
 const http = require('http');
 
