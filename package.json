@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node ./lib/bin/www.js",
-    "watch": "nodemon ./lib/bin/www.js --exec babel-node",
+    "start": "babel-node ./bin/www.js",
+    "watch": "nodemon ./bin/www.js --exec babel-node",
     "build": "babel lib -d dist",
     "serve": "node dist/bin/www.js"
   },

@@ -6,15 +6,16 @@ const mongoose = require('mongoose');
 const lessMiddleware = require('less-middleware');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const urlRouter = require('./routes/url');
+const indexRouter = require('../src/routes/index');
+const urlRouter = require('../src/routes/url');
 
 const app = express();
 
-const config = require('./db')
+const config = require('../dbconfig')
 
 // view engine setup
-app.set('../views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/views'));
+console.log('__dirname', __dirname)
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
@@ -24,9 +25,10 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect(config.DB, { useNewUrlParser: true }).then(
-  () => { console.log('Database is connected') },
-  err => { console.log('Cannot connect to database:', err) }
+mongoose.connect(config.DB, { useNewUrlParser: true })
+  .then(
+    () => { console.log('Database is connected') },
+    err => { console.log('Cannot connect to database:', err) }
 )
 
 app.use('/', indexRouter);
